@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星光專注力家庭網 | ADHD 兒童育兒陪伴與教養資源網</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            200: '#bae0fd',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                        },
+                        warmBg: '#FAF8F5',
+                        warmAmber: '#FDF3E7',
+                        sage: {
+                            50: '#f4f7f4',
+                            100: '#e3ebe3',
+                            500: '#648d68',
+                            600: '#4e7252',
+                        },
+                        coral: {
+                            100: '#ffe3e0',
+                            500: '#f06252',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom styles for animations and visual timer */
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 0.4; }
+            100% { transform: scale(0.95); opacity: 0.8; }
+        }
+        .timer-active {
+            animation: pulse-ring 3s infinite ease-in-out;
+        }
+        /* Custom print formatting for generated letters and toolkits */
+        @media print {
+            body * {
+                visibility: hidden;
+            }
+            #printable-area, #printable-area * {
+                visibility: visible;
+            }
+            #printable-area {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                background: white;
+                color: black;
+                padding: 20px;
+            }
+            .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-warmBg text-slate-800 font-sans antialiased min-h-screen flex flex-col selection:bg-brand-100 selection:text-brand-700">
+
+    <!-- HEADER & NAVBAR -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-amber-100/60 shadow-sm transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center gap-3 group">
+                    <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-amber-400 to-amber-200 flex items-center justify-center text-amber-800 font-bold text-xl shadow-inner transform group-hover:rotate-6 transition-transform">
+                        <i class="fa-solid me-0 fa-star text-amber-600"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-slate-800 via-brand-700 to-slate-700 bg-clip-text text-transparent">星光專注力家庭網</span>
+                        <p class="text-xs text-slate-500 hidden sm:block">ADHD 兒童陪伴與溫暖教養指南</p>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center gap-1 lg:gap-2">
+                    <a href="#about-adhd" class="px-3 py-2 rounded-xl text-slate-600 hover:text-brand-600 hover:bg-brand-50 font-medium text-sm transition">認識 ADHD</a>
+                    <a href="#daily-parenting" class="px-3 py-2 rounded-xl text-slate-600 hover:text-brand-600 hover:bg-brand-50 font-medium text-sm transition">日常教養與計時器</a>
+                    <a href="#teacher-letter" class="px-3 py-2 rounded-xl text-slate-600 hover:text-brand-600 hover:bg-brand-50 font-medium text-sm transition">親師溝通產生器</a>
+                    <a href="#downloadable-tools" class="px-3 py-2 rounded-xl text-slate-600 hover:text-brand-600 hover:bg-brand-50 font-medium text-sm transition">實用工具包</a>
+                    <a href="#parent-quiz" class="px-3 py-2 rounded-xl text-slate-600 hover:text-brand-600 hover:bg-brand-50 font-medium text-sm transition">家長壓力檢測</a>
+                </nav>
+
+                <!-- CTA Button -->
+                <div class="hidden sm:flex items-center gap-3">
+                    <a href="#downloadable-tools" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md shadow-amber-500/20 hover:shadow-lg transition flex items-center gap-2">
+                        <i class="fa-solid fa-file-arrow-down"></i>
+                        <span>免費工具下載</span>
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 focus:outline-none" aria-label="打開選單">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-2 shadow-lg">
+            <a href="#about-adhd" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-brand-50 font-medium">認識 ADHD</a>
+            <a href="#daily-parenting" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-brand-50 font-medium">日常教養與計時器</a>
+            <a href="#teacher-letter" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-brand-50 font-medium">親師溝通產生器</a>
+            <a href="#downloadable-tools" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-brand-50 font-medium">實用工具包</a>
+            <a href="#parent-quiz" class="block px-4 py-2.5 rounded-xl text-slate-700 hover:bg-brand-50 font-medium">家長壓力檢測</a>
+            <a href="#downloadable-tools" class="mt-2 w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-medium py-2.5 rounded-xl block">
+                免費下載育兒工具包
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- HERO BANNER -->
+        <section id="hero" class="relative overflow-hidden pt-8 pb-16 md:pt-16 md:pb-24 bg-gradient-to-b from-amber-50/80 via-warmBg to-warmBg">
+            <!-- Background Decorative Orbs -->
+            <div class="absolute top-10 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-amber-200/30 blur-[100px] rounded-full pointer-events-none"></div>
+            <div class="absolute top-40 right-10 w-[300px] h-[300px] bg-brand-200/30 blur-[80px] rounded-full pointer-events-none"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                    
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100 text-amber-800 text-xs sm:text-sm font-semibold border border-amber-200/80 shadow-sm">
+                            <i class="fa-solid fa-heart text-amber-600"></i>
+                            <span>陪孩子找到獨一無二的光芒</span>
+                        </div>
+                        
+                        <h1 class="text-3xl sm:text-5xl lg:text-5xl font-extrabold text-slate-900 leading-tight tracking-tight">
+                            理解 ADHD 孩子的世界，<br>
+                            <span class="bg-gradient-to-r from-brand-600 via-slate-700 to-amber-600 bg-clip-text text-transparent">讓育兒路上充滿溫暖與方法</span>
+                        </h1>
+                        
+                        <p class="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            您並不孤單！我們提供基於科學實證的教養策略、互動式視覺計時器、客製化親師溝通信產生器，以及可立即列印的作息表，陪您陪伴孩子自信成長。
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#parent-quiz" class="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-brand-600 hover:bg-brand-700 text-white font-semibold shadow-lg shadow-brand-500/25 hover:shadow-xl transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-clipboard-check"></i>
+                                <span>3分鐘家長壓力與教養快速檢測</span>
+                            </a>
+                            <a href="#daily-parenting" class="w-full sm:w-auto px-7 py-3.5 rounded-2xl bg-white border border-slate-200 hover:border-slate-300 text-slate-700 font-semibold shadow-sm hover:bg-slate-50 transition flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-clock text-amber-500"></i>
+                                <span>體驗互動視覺計時器</span>
+                            </a>
+                        </div>
+
+                        <!-- Stats Highlights -->
+                        <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-200/80 max-w-lg mx-auto lg:mx-0">
+                            <div>
+                                <p class="text-2xl font-bold text-slate-800">100%</p>
+                                <p class="text-xs text-slate-500">科學正向教養理念</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-slate-800">免費</p>
+                                <p class="text-xs text-slate-500">視覺化圖卡下載</p>
+                            </div>
+                            <div>
+                                <p class="text-2xl font-bold text-slate-800">實戰</p>
+                                <p class="text-xs text-slate-500">親師溝通與情緒解方</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Illustration Visual -->
+                    <div class="lg:col-span-5 relative">
+                        <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-xl border border-slate-100 relative z-10">
+                            <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-xl bg-sage-100 text-sage-600 flex items-center justify-center font-bold">
+                                        <i class="fa-solid fa-lightbulb text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-bold text-slate-800">本日育兒溫馨提醒</h3>
+                                        <p class="text-xs text-slate-400">Starlight Parent Tip</p>
+                                    </div>
+                                </div>
+                                <span class="text-xs font-semibold px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full">每日陪伴</span>
+                            </div>
+                            <blockquote class="text-slate-600 text-sm leading-relaxed italic bg-warmBg p-4 rounded-2xl border-l-4 border-amber-400">
+                                「ADHD 孩子的大腦就像一部擁有法拉利引擎、但煞車系統仍在升級中的跑車。他們不是故意不听，而是需要我們幫他標示明確的煞車線與加油站。」
+                            </blockquote>
+                            <div class="mt-6 flex items-center justify-between text-xs text-slate-500">
+                                <span><i class="fa-solid fa-shield-heart text-red-400 mr-1"></i> 請記得給自己一個擁抱</span>
+                                <a href="#about-adhd" class="text-brand-600 font-semibold hover:underline">了解特質 <i class="fa-solid fa-arrow-right text-xs"></i></a>
+                            </div>
+                        </div>
+
+                        <!-- Card Decorative Floating Elements -->
+                        <div class="hidden sm:flex absolute -bottom-6 -left-6 bg-amber-500 text-white p-4 rounded-2xl shadow-lg z-20 items-center gap-3">
+                            <i class="fa-solid fa-puzzle-piece text-2xl text-amber-200"></i>
+                            <div>
+                                <p class="text-xs font-medium text-amber-100">核心核心技巧</p>
+                                <p class="text-sm font-bold">拆解任務・視覺提示</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- CORE VALUES -->
+        <section class="py-12 bg-white border-y border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="p-6 rounded-2xl bg-warmBg border border-amber-100/60 hover:shadow-md transition">
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">基於腦科學與醫學衛教</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">提供正確的 ADHD 正向認知，協助家長破除誤解，以理解代替責怪，用科學策略取代無效懲罰。</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-warmBg border border-brand-100/60 hover:shadow-md transition">
+                        <div class="w-12 h-12 rounded-xl bg-brand-100 text-brand-700 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-toolbox"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">立即入手的實用工具</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">包含線上視覺計時器、自動產生親師溝通信，以及可列印的兒童作息表、集點獎勵卡等高實用資源。</p>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-warmBg border border-sage-100/60 hover:shadow-md transition">
+                        <div class="w-12 h-12 rounded-xl bg-sage-100 text-sage-700 flex items-center justify-center text-xl mb-4">
+                            <i class="fa-solid fa-hands-holding-child"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-slate-800 mb-2">溫暖同理的家長陪伴</h3>
+                        <p class="text-sm text-slate-600 leading-relaxed">照顧孩子前先照顧好自己。透過簡短的家長壓力檢測與情緒調節心法，為您補充電量。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: 認識 ADHD (Understanding ADHD) -->
+        <section id="about-adhd" class="py-16 bg-warmBg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-xs font-bold tracking-widest text-brand-600 uppercase bg-brand-50 px-3 py-1 rounded-full border border-brand-100">正向認知</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3">認識 ADHD：用對眼光，看見孩子的獨特價值</h2>
+                    <p class="text-slate-600 mt-2">ADHD（注意力不足過動症）是大腦執行功能的發展差異，而非家長教養失敗或孩子故意的行為。</p>
+                </div>
+
+                <!-- Interactive Type Switch Tabs -->
+                <div class="bg-white rounded-3xl p-6 md:p-8 shadow-sm border border-slate-200/80 mb-16">
+                    <h3 class="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-tags text-amber-500"></i>
+                        <span>ADHD 的三大核心類型與表現特質</span>
+                    </h3>
+
+                    <!-- Tabs Button -->
+                    <div class="flex flex-wrap gap-2 border-b border-slate-100 pb-4 mb-6">
+                        <button onclick="switchAdhdTab('inattentive')" id="tab-btn-inattentive" class="adhd-tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-brand-600 text-white shadow-sm">
+                            <i class="fa-solid fa-eye-slash mr-1.5"></i> 注意力不集中型 (Inattentive)
+                        </button>
+                        <button onclick="switchAdhdTab('hyperactive')" id="tab-btn-hyperactive" class="adhd-tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-100 text-slate-600 hover:bg-slate-200">
+                            <i class="fa-solid fa-bolt mr-1.5"></i> 過動 / 衝動型 (Hyperactive)
+                        </button>
+                        <button onclick="switchAdhdTab('combined')" id="tab-btn-combined" class="adhd-tab-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition bg-slate-100 text-slate-600 hover:bg-slate-200">
+                            <i class="fa-solid fa-shuffle mr-1.5"></i> 混合型 (Combined)
+                        </button>
+                    </div>
+
+                    <!-- Tab Content Panels -->
+                    <div id="tab-content-inattentive" class="adhd-tab-panel grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div class="space-y-4">
+                            <div class="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-lg text-xs font-bold">常見表現：看似發呆、常忘東忘西</div>
+                            <h4 class="text-lg font-bold text-slate-800">大腦訊息處理較慢，容易被周遭聲音或想法抽離</h4>
+                            <ul class="space-y-2.5 text-slate-600 text-sm">
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-brand-500 mt-1"></i> 經常漏聽連續指令（例如：「去刷牙、拿書包、穿鞋子」只做第一個）</li>
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-brand-500 mt-1"></i> 寫作業時間長、容易錯漏字或看錯題目號碼</li>
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-brand-500 mt-1"></i> 經常遺失文具、水壺或作業本</li>
+                            </ul>
+                            <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900">
+                                💡 <strong>陪伴策略：</strong> 給予「一次一個」指令、使用視覺提示卡、將作業拆成短階段。
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <h5 class="font-bold text-slate-700 text-sm mb-3">優勢與潛能閃光點：</h5>
+                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-white rounded-xl shadow-sm"><span class="font-bold text-brand-600 block mb-1">💡 豐富想像力</span>具備獨特觀察视角與藝術創作潛能</div>
+                                <div class="p-3 bg-white rounded-xl shadow-sm"><span class="font-bold text-brand-600 block mb-1">🧘 性格溫和</span>不太會正面衝撞，善於沉浸個人興趣</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab-content-hyperactive" class="adhd-tab-panel hidden grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div class="space-y-4">
+                            <div class="inline-block px-3 py-1 bg-amber-100 text-amber-800 rounded-lg text-xs font-bold">常見表現：坐立難安、精力充沛</div>
+                            <h4 class="text-lg font-bold text-slate-800">大腦多巴胺抑制機制較弱，需要透過身體動作協助大腦保持清醒</h4>
+                            <ul class="space-y-2.5 text-slate-600 text-sm">
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-amber-500 mt-1"></i> 坐在椅子上經常扭動、玩手邊的鉛筆或揉紙屑</li>
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-amber-500 mt-1"></i> 搶著回答問題、難以排隊等待、容易打斷他人說話</li>
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-amber-500 mt-1"></i> 行為較衝動，少考慮安全或後果</li>
+                            </ul>
+                            <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900">
+                                💡 <strong>陪伴策略：</strong> 提供體能宣洩管道（如運動）、給予坐姿彈性（如軟墊）、使用讚賞代替告誡。
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <h5 class="font-bold text-slate-700 text-sm mb-3">優勢與潛能閃光點：</h5>
+                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-white rounded-xl shadow-sm"><span class="font-bold text-amber-600 block mb-1">⚡ 活力充沛</span>熱情有勁，具備強大的行動力與領導潛質</div>
+                                <div class="p-3 bg-white rounded-xl shadow-sm"><span class="font-bold text-amber-600 block mb-1">🗣️ 真誠直率</span>不隱藏情緒，表達直截了當且熱情</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tab-content-combined" class="adhd-tab-panel hidden grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <div class="space-y-4">
+                            <div class="inline-block px-3 py-1 bg-purple-100 text-purple-800 rounded-lg text-xs font-bold">常見表現：最普遍的診斷類型</div>
+                            <h4 class="text-lg font-bold text-slate-800">同時呈現注意力不集中與過動衝動的特質</h4>
+                            <ul class="space-y-2.5 text-slate-600 text-sm">
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-purple-500 mt-1"></i> 容易受到環境刺激分心，同時又很難靜坐</li>
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-purple-500 mt-1"></i> 在感興趣的事物上展現「過度專注」，但日常課業卻很難提勁</li>
+                                <li class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-purple-500 mt-1"></i> 情緒起伏較快，遇到挫折容易暴走</li>
+                            </ul>
+                            <div class="p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-900">
+                                💡 <strong>陪伴策略：</strong> 結合結構化作息、明確的代幣獎勵制度，以及情緒冷卻角落。
+                            </div>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                            <h5 class="font-bold text-slate-700 text-sm mb-3">優勢與潛能閃光點：</h5>
+                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-white rounded-xl shadow-sm"><span class="font-bold text-purple-600 block mb-1">🔥 過度專注力</span>在喜愛領域能投入超乎常人的熱情與時間</div>
+                                <div class="p-3 bg-white rounded-xl shadow-sm"><span class="font-bold text-purple-600 block mb-1">🎨 創新思維</span>思考不受框架限制，點子極具創意</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Myth Busters Cards -->
+                <h3 class="text-2xl font-bold text-slate-800 mb-6 text-center">破除常見迷思（點擊卡片翻轉）</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Myth 1 -->
+                    <div onclick="toggleMythCard(this)" class="group cursor-pointer bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-300 transition-all duration-300 relative min-h-[220px] flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-bold px-2.5 py-1 bg-red-100 text-red-700 rounded-full"><i class="fa-solid fa-triangle-exclamation mr-1"></i>常見迷思 #1</span>
+                                <span class="text-xs text-slate-400 group-hover:text-brand-600">點擊切換 <i class="fa-solid fa-arrows-rotate"></i></span>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-base mb-2 myth-front">「是不是因為父母管教太鬆，孩子才會變成這樣？」</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed hidden myth-back text-emerald-800 bg-emerald-50 p-3 rounded-xl border border-emerald-100">
+                                <strong>事實：</strong> 不是！ADHD 是大腦前額葉神經傳導物質（多巴胺與去甲腎上腺素）調節的生理發育差異，與家長教養方式無直接因果關係。好的教養可以幫助孩子適應，但絕非致病原因。
+                            </p>
+                        </div>
+                        <div class="text-xs text-slate-400 border-t border-slate-100 pt-3 mt-4">破除內疚，給自己一份同理</div>
+                    </div>
+
+                    <!-- Myth 2 -->
+                    <div onclick="toggleMythCard(this)" class="group cursor-pointer bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-300 transition-all duration-300 relative min-h-[220px] flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-bold px-2.5 py-1 bg-red-100 text-red-700 rounded-full"><i class="fa-solid fa-triangle-exclamation mr-1"></i>常見迷思 #2</span>
+                                <span class="text-xs text-slate-400 group-hover:text-brand-600">點擊切換 <i class="fa-solid fa-arrows-rotate"></i></span>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-base mb-2 myth-front">「孩子打電動可以坐好幾個小時，他根本只是不想念書而已！」</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed hidden myth-back text-emerald-800 bg-emerald-50 p-3 rounded-xl border border-emerald-100">
+                                <strong>事實：</strong> 電子遊戲提供立即強烈的多巴胺回饋，因此能驅動 ADHD 大腦「過度專注」。但面對反覆、缺乏立即回饋的課業時，孩子大腦難以自發產生足夠多巴胺，這並非單純「意願」問題。
+                            </p>
+                        </div>
+                        <div class="text-xs text-slate-400 border-t border-slate-100 pt-3 mt-4">理解大腦的報酬神經機制</div>
+                    </div>
+
+                    <!-- Myth 3 -->
+                    <div onclick="toggleMythCard(this)" class="group cursor-pointer bg-white p-6 rounded-2xl shadow-sm border border-slate-200 hover:border-brand-300 transition-all duration-300 relative min-h-[220px] flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="text-xs font-bold px-2.5 py-1 bg-red-100 text-red-700 rounded-full"><i class="fa-solid fa-triangle-exclamation mr-1"></i>常見迷思 #3</span>
+                                <span class="text-xs text-slate-400 group-hover:text-brand-600">點擊切換 <i class="fa-solid fa-arrows-rotate"></i></span>
+                            </div>
+                            <h4 class="font-bold text-slate-800 text-base mb-2 myth-front">「小時候過動沒關係，長大之後自然就會好了啦？」</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed hidden myth-back text-emerald-800 bg-emerald-50 p-3 rounded-xl border border-emerald-100">
+                                <strong>事實：</strong> 約有 50%-60% 的患者症狀會延續至成年。雖然身體的過動現象會隨年齡增加而減緩，但時間管理、組織能力與衝動控制的挑戰依然存在。早期介入能幫助孩子建立良好的應對機制。
+                            </p>
+                        </div>
+                        <div class="text-xs text-slate-400 border-t border-slate-100 pt-3 mt-4">黃金陪伴期：建立生活好習慣</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: 日常教養與視覺計時器 (Daily Parenting & Timer Tool) -->
+        <section id="daily-parenting" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-xs font-bold tracking-widest text-amber-600 uppercase bg-amber-50 px-3 py-1 rounded-full border border-amber-100">實用技巧工具</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3">日常教養心法與互動視覺計時器</h2>
+                    <p class="text-slate-600 mt-2">ADHD 孩子對抽象的時間感知較弱。「視覺化」與「切碎任務」是協助寫作業與常規訓練的最佳利器。</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+                    
+                    <!-- Left Column: Visual Timer Simulator -->
+                    <div class="lg:col-span-6 bg-gradient-to-br from-amber-50 to-orange-50 p-6 sm:p-8 rounded-3xl border border-amber-200/80 shadow-md">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-stopwatch text-amber-600"></i>
+                                <span>兒童專用「視覺化計時器」模擬器</span>
+                            </h3>
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-amber-200 text-amber-900 rounded-md">陪伴神器</span>
+                        </div>
+                        <p class="text-xs text-slate-600 mb-6">
+                            透過縮小的色塊直觀呈現「時間正在流逝」，讓孩子看得見時間！建議採用「微型番茄鐘」：專注 15 分鐘、休息 5 分鐘。
+                        </p>
+
+                        <!-- Interactive Timer Canvas Box -->
+                        <div class="flex flex-col items-center bg-white p-6 rounded-2xl shadow-inner border border-amber-100 mb-6">
+                            
+                            <!-- Mode selector -->
+                            <div class="flex gap-2 mb-6">
+                                <button id="timer-mode-focus" onclick="setTimerMode('focus')" class="px-4 py-1.5 rounded-full text-xs font-bold transition bg-amber-500 text-white shadow-sm">
+                                    專注模式 (15分鐘)
+                                </button>
+                                <button id="timer-mode-break" onclick="setTimerMode('break')" class="px-4 py-1.5 rounded-full text-xs font-bold transition bg-slate-100 text-slate-600">
+                                    休息模式 (5分鐘)
+                                </button>
+                            </div>
+
+                            <!-- Visual Timer Circle -->
+                            <div class="relative w-48 h-48 sm:w-56 sm:h-56 flex items-center justify-center my-2">
+                                <svg class="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
+                                    <!-- Background Circle -->
+                                    <circle cx="50" cy="50" r="42" stroke="#f3f4f6" stroke-width="10" fill="transparent" />
+                                    <!-- Dynamic Progress Pie/Arc -->
+                                    <circle id="timer-circle" cx="50" cy="50" r="42" stroke="#f59e0b" stroke-width="10" 
+                                            stroke-dasharray="263.89" stroke-dashoffset="0" stroke-linecap="round" fill="transparent"
+                                            class="transition-all duration-1000 ease-linear" />
+                                </svg>
+                                
+                                <div class="absolute flex flex-col items-center justify-center text-center">
+                                    <span id="timer-display" class="text-3xl sm:text-4xl font-extrabold text-slate-800 tracking-tight">15:00</span>
+                                    <span id="timer-status-text" class="text-xs font-semibold text-amber-600 mt-1">寫作業 / 專注中</span>
+                                </div>
+                            </div>
+
+                            <!-- Timer Controls -->
+                            <div class="flex items-center gap-3 mt-6">
+                                <button id="timer-start-btn" onclick="toggleTimer()" class="px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm shadow-md transition flex items-center gap-2">
+                                    <i id="timer-start-icon" class="fa-solid fa-play"></i>
+                                    <span id="timer-start-label">開始計時</span>
+                                </button>
+                                <button onclick="resetTimer()" class="px-4 py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-600 font-bold text-sm transition">
+                                    <i class="fa-solid fa-rotate-left mr-1"></i> 重置
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Usage Tips -->
+                        <div class="bg-white/80 p-4 rounded-xl text-xs text-slate-600 space-y-1.5">
+                            <p class="font-bold text-slate-800"><i class="fa-solid fa-star text-amber-500 mr-1"></i>實用引導句型推薦：</p>
+                            <p>「等紅色圓圈變不見的時候，我們就可以吃餅乾休息囉！」</p>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Emotion Meltdown Strategy Guide -->
+                    <div class="lg:col-span-6 space-y-6">
+                        <h3 class="text-xl font-bold text-slate-800 flex items-center gap-2">
+                            <i class="fa-solid fa-volcano text-coral-500"></i>
+                            <span>孩子情緒暴走（Melt-down）時的 4 步冷卻法</span>
+                        </h3>
+                        <p class="text-sm text-slate-600">當 ADHD 孩子挫折忍受度到達臨界點時，大腦掌管理智的情緒開關會暫時關閉。此時講道理是無效的，請試試以下步驟：</p>
+
+                        <div class="space-y-4">
+                            <!-- Step 1 -->
+                            <div class="p-4 rounded-2xl bg-warmBg border border-slate-200 flex gap-4 items-start hover:border-brand-300 transition">
+                                <div class="w-8 h-8 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center shrink-0">1</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-base">保持冷靜與安全第一 (Safety & Calm)</h4>
+                                    <p class="text-xs text-slate-600 mt-1">家長先做三次深呼吸。語調降平、字數減少。確保周遭沒有危險物品，暫不進行檢討與教訓。</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 2 -->
+                            <div class="p-4 rounded-2xl bg-warmBg border border-slate-200 flex gap-4 items-start hover:border-brand-300 transition">
+                                <div class="w-8 h-8 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center shrink-0">2</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-base">建立「冷卻角落」與轉移刺激 (Cool-down)</h4>
+                                    <p class="text-xs text-slate-600 mt-1">引導孩子到安靜、光線柔和的避風港（如擺放抱枕、軟墊的角角），提供紓壓球或重力毯協助緩和神經系統。</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 3 -->
+                            <div class="p-4 rounded-2xl bg-warmBg border border-slate-200 flex gap-4 items-start hover:border-brand-300 transition">
+                                <div class="w-8 h-8 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center shrink-0">3</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-base">情感反映與接納 (Name the Emotion)</h4>
+                                    <p class="text-xs text-slate-600 mt-1">替孩子說出感受：「我知道你因為積木倒掉非常生氣對不對？我陪著你。」讓孩子知道情緒是被允許的。</p>
+                                </div>
+                            </div>
+
+                            <!-- Step 4 -->
+                            <div class="p-4 rounded-2xl bg-warmBg border border-slate-200 flex gap-4 items-start hover:border-brand-300 transition">
+                                <div class="w-8 h-8 rounded-full bg-brand-600 text-white font-bold flex items-center justify-center shrink-0">4</div>
+                                <div>
+                                    <h4 class="font-bold text-slate-800 text-base">等平靜後再一起尋求解方 (Problem Solving)</h4>
+                                    <p class="text-xs text-slate-600 mt-1">待呼吸平穩後，討論下次遇到同樣困難時「可以怎麼做」，並給予擁抱讚許孩子勇敢調節情緒。</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: 親師溝通信自動產生器 (Teacher Communication Tool) -->
+        <section id="teacher-letter" class="py-16 bg-warmBg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-xs font-bold tracking-widest text-brand-600 uppercase bg-brand-50 px-3 py-1 rounded-full border border-brand-100">開學溝通必備</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3">客製化「寫給老師的一封信」產生器</h2>
+                    <p class="text-slate-600 mt-2">勾選孩子的特質與在校建議，即可立即生成充滿誠意、禮貌且專業的親師溝通信，協助老師快速了解孩子。</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                    
+                    <!-- Left: Input Options -->
+                    <div class="lg:col-span-5 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-sm space-y-6">
+                        <h3 class="text-lg font-bold text-slate-800 border-b border-slate-100 pb-3">1. 選擇孩子的特質與需求</h3>
+
+                        <!-- Form Field 1: Child Name & Grade -->
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">孩子暱稱/名字</label>
+                                <input type="text" id="child-name" value="小星" placeholder="例：小明" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">年級/班級</label>
+                                <input type="text" id="child-grade" value="三年級" placeholder="例：二年三班" class="w-full px-3 py-2 rounded-xl border border-slate-200 text-sm focus:ring-2 focus:ring-brand-500 focus:outline-none">
+                            </div>
+                        </div>
+
+                        <!-- Form Field 2: Strengths (勾選閃光點) -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-2">孩子的優點與閃光點 (可多選)</label>
+                            <div class="space-y-2 text-xs">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" class="strength-cb rounded text-brand-600 focus:ring-brand-500" value="熱心助人、對同儕相當友善" checked>
+                                    <span>熱心助人、對同儕相當友善</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" class="strength-cb rounded text-brand-600 focus:ring-brand-500" value="好奇心強，對喜愛的領域充滿熱情" checked>
+                                    <span>好奇心強，對喜愛的領域相當投入</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" class="strength-cb rounded text-brand-600 focus:ring-brand-500" value="反應敏捷，思考富有想像力與創意">
+                                    <span>反應敏捷，思考富有想像力</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Form Field 3: Triggers / Challenges (需要協助的地方) -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-2">在學校較容易碰到的挑戰 (可多選)</label>
+                            <div class="space-y-2 text-xs">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" class="challenge-cb rounded text-brand-600 focus:ring-brand-500" value="課堂上容易受窗外或周遭聲音分心" checked>
+                                    <span>課堂上容易受周遭聲音或物品分心</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" class="challenge-cb rounded text-brand-600 focus:ring-brand-500" value="抄寫黑板板書速度較慢，需要較多時間" checked>
+                                    <span>抄寫板書或聯絡簿速度較慢</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" class="challenge-cb rounded text-brand-600 focus:ring-brand-500" value="偶爾會有坐立難安、排隊較難久候的情況">
+                                    <span>偶爾坐立難安或難以長時間久坐</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Form Field 4: Suggested Accommodations (希望老師協助的方式) -->
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-2">建議老師可嘗試的輔助方式 (可多選)</label>
+                            <div class="space-y-2 text-xs">
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" class="strategy-cb rounded text-brand-600 focus:ring-brand-500" value="安排在前排中央位置，減少窗外干擾" checked>
+                                    <span>安排前排座位，減少環境干擾</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" class="strategy-cb rounded text-brand-600 focus:ring-brand-500" value="當孩子分心時，請用輕拍肩膀或眼神關懷代替公開指責" checked>
+                                    <span>分心時以肢體輕拍或眼神提示代替指責</span>
+                                </label>
+                                <label class="flex items-center gap-2 cursor-pointer">
+                                    <input type="checkbox" class="strategy-cb rounded text-brand-600 focus:ring-brand-500" value="交付微型小任務（如幫忙發作業），讓孩子有適度活動機會">
+                                    <span>交付發作業等微型任務，提供活動機會</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button onclick="generateTeacherLetter()" class="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-sm shadow-md transition flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                            <span>更新與生成信件內容</span>
+                        </button>
+                    </div>
+
+                    <!-- Right: Generated Letter Preview -->
+                    <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-md relative">
+                        <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-4">
+                            <h3 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                                <i class="fa-solid fa-envelope-open-text text-brand-600"></i>
+                                <span>2. 信件預覽與複製</span>
+                            </h3>
+                            <div class="flex gap-2">
+                                <button onclick="copyLetterText()" class="px-3 py-1.5 rounded-lg bg-brand-50 hover:bg-brand-100 text-brand-700 font-bold text-xs transition flex items-center gap-1">
+                                    <i class="fa-solid fa-copy"></i>
+                                    <span>複製全文</span>
+                                </button>
+                                <button onclick="printLetter()" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition flex items-center gap-1">
+                                    <i class="fa-solid fa-print"></i>
+                                    <span>列印</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Toast Notification for Copying -->
+                        <div id="copy-toast" class="hidden absolute top-16 right-8 bg-slate-800 text-white text-xs px-4 py-2 rounded-lg shadow-lg transition">
+                            <i class="fa-solid fa-circle-check text-emerald-400 mr-1"></i> 已成功複製信件文字！
+                        </div>
+
+                        <!-- Letter Content Display Box -->
+                        <div id="printable-area" class="bg-warmBg p-6 rounded-2xl border border-slate-200/60 text-slate-700 text-sm leading-relaxed space-y-4 font-sans whitespace-pre-line">
+                            <p id="letter-output">請點擊左側「更新與生成信件內容」按鈕。</p>
+                        </div>
+
+                        <p class="text-xs text-slate-400 mt-4 flex items-center gap-1">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <span>溫馨提示：您可以將生成文字複製並貼在聯絡簿夾頁、Email 或 Line 訊息傳送給老師。</span>
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 4: 免費下載工具包 (Downloadable Printables Toolkits) -->
+        <section id="downloadable-tools" class="py-16 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center max-w-3xl mx-auto mb-12">
+                    <span class="text-xs font-bold tracking-widest text-emerald-600 uppercase bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">免費育兒資源</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3">實用視覺化工具表單（免費預覽與列印）</h2>
+                    <p class="text-slate-600 mt-2">免註冊，點擊即可線上預覽或直接列印，幫助孩子建立規律常規與獲得正向成就感。</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    
+                    <!-- Toolkit 1: Visual Daily Schedule -->
+                    <div class="bg-warmBg p-6 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-700 flex items-center justify-center text-xl mb-4">
+                                <i class="fa-solid fa-calendar-check"></i>
+                            </div>
+                            <span class="text-xs font-bold text-amber-800 bg-amber-100/80 px-2.5 py-1 rounded-md">推薦必備</span>
+                            <h3 class="text-lg font-bold text-slate-800 mt-2">兒童每日視覺化作息表</h3>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                將放學後行程（洗手、寫作業、玩樂、刷牙）圖像化，搭配勾選欄位，讓孩子清楚知道「下一步要去做什麼」。
+                            </p>
+                        </div>
+                        <div class="mt-6 border-t border-slate-200/60 pt-4 flex gap-2">
+                            <button onclick="openModal('modal-schedule')" class="w-full py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs shadow-sm transition flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-eye"></i> 預覽與列印
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Toolkit 2: Daily Reward Tracker -->
+                    <div class="bg-warmBg p-6 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center text-xl mb-4">
+                                <i class="fa-solid fa-award"></i>
+                            </div>
+                            <span class="text-xs font-bold text-brand-800 bg-brand-100/80 px-2.5 py-1 rounded-md">正向強化</span>
+                            <h3 class="text-lg font-bold text-slate-800 mt-2">星光英雄正向獎勵集點卡</h3>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                專為 ADHD 設計的短週期代幣集點卡（5格/10格），累積星星兌換親子的優質獎勵時間（如去公園騎車30分鐘）。
+                            </p>
+                        </div>
+                        <div class="mt-6 border-t border-slate-200/60 pt-4 flex gap-2">
+                            <button onclick="openModal('modal-reward')" class="w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs shadow-sm transition flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-eye"></i> 預覽與列印
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Toolkit 3: Parent Mood Journal -->
+                    <div class="bg-warmBg p-6 rounded-3xl border border-slate-200/80 shadow-sm flex flex-col justify-between hover:shadow-md transition">
+                        <div>
+                            <div class="w-12 h-12 rounded-2xl bg-sage-100 text-sage-700 flex items-center justify-center text-xl mb-4">
+                                <i class="fa-solid fa-book-bookmark"></i>
+                            </div>
+                            <span class="text-xs font-bold text-sage-800 bg-sage-100/80 px-2.5 py-1 rounded-md">家長關懷</span>
+                            <h3 class="text-lg font-bold text-slate-800 mt-2">家長每日充電與情緒日誌</h3>
+                            <p class="text-xs text-slate-600 mt-2 leading-relaxed">
+                                記錄今天的微小順利時刻與孩子的閃光點，幫助家長從育兒焦慮中抽離，重拾對家庭的正面能量。
+                            </p>
+                        </div>
+                        <div class="mt-6 border-t border-slate-200/60 pt-4 flex gap-2">
+                            <button onclick="openModal('modal-journal')" class="w-full py-2.5 rounded-xl bg-sage-600 hover:bg-sage-700 text-white font-bold text-xs shadow-sm transition flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-eye"></i> 預覽與列印
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 5: 家長自我檢視與壓力測驗 (Interactive Parent Stress Quiz) -->
+        <section id="parent-quiz" class="py-16 bg-gradient-to-b from-warmBg to-amber-50/50">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="text-center mb-10">
+                    <span class="text-xs font-bold tracking-widest text-amber-700 uppercase bg-amber-100 px-3 py-1 rounded-full border border-amber-200">家長自我關懷</span>
+                    <h2 class="text-3xl font-extrabold text-slate-900 mt-3">育兒壓力與陪伴狀態 3 分鐘快速自我檢測</h2>
+                    <p class="text-slate-600 mt-2 text-sm">照顧好自己，才能更有能量照顧孩子。回答以下 4 個簡單問題，取得暖心回饋與建議。</p>
+                </div>
+
+                <div id="quiz-container" class="bg-white p-6 sm:p-10 rounded-3xl border border-slate-200 shadow-sm">
+                    
+                    <form id="quiz-form" class="space-y-8">
+                        
+                        <!-- Question 1 -->
+                        <div class="space-y-3">
+                            <p class="font-bold text-slate-800 text-base">1. 當孩子寫作業拖延或無法靜下來時，您的第一反應通常是？</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                                <label class="p-3.5 rounded-xl border border-slate-200 hover:border-brand-300 flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="q1" value="3" class="text-brand-600 focus:ring-brand-500" required>
+                                    <span>情緒容易斷線爆發，事後感到後悔與內疚</span>
+                                </label>
+                                <label class="p-3.5 rounded-xl border border-slate-200 hover:border-brand-300 flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="q1" value="1" class="text-brand-600 focus:ring-brand-500">
+                                    <span>嘗試冷靜，使用計時器或暫停一下再繼續</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 2 -->
+                        <div class="space-y-3">
+                            <p class="font-bold text-slate-800 text-base">2. 您是否有屬於自己的放鬆時間與紓壓管道？</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                                <label class="p-3.5 rounded-xl border border-slate-200 hover:border-brand-300 flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="q2" value="3" class="text-brand-600 focus:ring-brand-500" required>
+                                    <span>幾乎沒有，每天時間都被照顧孩子與家務填滿</span>
+                                </label>
+                                <label class="p-3.5 rounded-xl border border-slate-200 hover:border-brand-300 flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="q2" value="1" class="text-brand-600 focus:ring-brand-500">
+                                    <span>每週至少能安排 1-2 小時做自己喜歡的事</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 3 -->
+                        <div class="space-y-3">
+                            <p class="font-bold text-slate-800 text-base">3. 面對學校老師反映孩子在校狀況時，您的心情通常是？</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                                <label class="p-3.5 rounded-xl border border-slate-200 hover:border-brand-300 flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="q3" value="3" class="text-brand-600 focus:ring-brand-500" required>
+                                    <span>感到無比焦慮、挫折，甚至害怕接手機或聯絡簿</span>
+                                </label>
+                                <label class="p-3.5 rounded-xl border border-slate-200 hover:border-brand-300 flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="q3" value="1" class="text-brand-600 focus:ring-brand-500">
+                                    <span>將其視為溝通契機，積極尋求親師合作方案</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Question 4 -->
+                        <div class="space-y-3">
+                            <p class="font-bold text-slate-800 text-base">4. 您是否能經常看見並讚美孩子的微小進步？</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                                <label class="p-3.5 rounded-xl border border-slate-200 hover:border-brand-300 flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="q4" value="1" class="text-brand-600 focus:ring-brand-500" required>
+                                    <span>是的，只要有一點小進步就會立即給予具體讚美</span>
+                                </label>
+                                <label class="p-3.5 rounded-xl border border-slate-200 hover:border-brand-300 flex items-center gap-3 cursor-pointer">
+                                    <input type="radio" name="q4" value="3" class="text-brand-600 focus:ring-brand-500">
+                                    <span>較難發現，目光容易停留在孩子沒做好的地方</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button type="button" onclick="calculateQuizResult()" class="w-full py-3.5 rounded-2xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-base shadow-md transition">
+                            查看檢測結果與專屬陪伴建議
+                        </button>
+                    </form>
+
+                    <!-- Quiz Result Box -->
+                    <div id="quiz-result" class="hidden space-y-6 animate-fadeIn">
+                        <div class="p-6 rounded-2xl bg-amber-50 border border-amber-200 text-center">
+                            <div class="w-16 h-16 rounded-full bg-amber-200 text-amber-800 flex items-center justify-center text-2xl mx-auto mb-3">
+                                <i class="fa-solid fa-heart"></i>
+                            </div>
+                            <h3 id="result-title" class="text-xl font-bold text-slate-800">檢測結果評估中...</h3>
+                            <p id="result-desc" class="text-slate-600 text-sm mt-2 leading-relaxed">...</p>
+                        </div>
+
+                        <div class="bg-white p-5 rounded-2xl border border-slate-200 space-y-3">
+                            <h4 class="font-bold text-slate-800 text-sm"><i class="fa-solid fa-seedling text-emerald-500 mr-1.5"></i>給您的溫馨實踐指引：</h4>
+                            <ul id="result-tips" class="text-xs text-slate-600 space-y-2 list-disc list-inside">
+                                <li>暫無建議</li>
+                            </ul>
+                        </div>
+
+                        <button onclick="resetQuiz()" class="w-full py-2.5 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-xs transition">
+                            重新測驗
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER & DISCLAIMER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 border-b border-slate-800 pb-8">
+                <div>
+                    <div class="flex items-center gap-2 text-white font-bold text-xl mb-1">
+                        <i class="fa-solid fa-star text-amber-400"></i>
+                        <span>星光專注力家庭網</span>
+                    </div>
+                    <p class="text-xs text-slate-400">Starlight ADHD Parent Support & Resource Hub</p>
+                </div>
+                <div class="flex flex-wrap gap-4 text-xs">
+                    <a href="#about-adhd" class="hover:text-amber-400 transition">認識 ADHD</a>
+                    <a href="#daily-parenting" class="hover:text-amber-400 transition">視覺計時器</a>
+                    <a href="#teacher-letter" class="hover:text-amber-400 transition">親師溝通信</a>
+                    <a href="#downloadable-tools" class="hover:text-amber-400 transition">工具下載</a>
+                </div>
+            </div>
+
+            <!-- Medical Disclaimer Box (CRITICAL) -->
+            <div class="bg-slate-800/80 p-5 rounded-2xl border border-slate-700/80 text-xs leading-relaxed text-slate-300">
+                <p class="font-bold text-amber-400 mb-1 flex items-center gap-1.5">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    <span>網站免責聲明 (Medical Disclaimer)</span>
+                </p>
+                <p>
+                    本網站所提供之所有育兒衛教資訊、文章、視覺計時工具與可列印表單，僅供家庭教養經驗交流與一般衛教參考使用，**不可作為專業醫療診斷、評估或替代精神科醫師之治療處方**。若您對孩子的身心發展、情緒或學習狀態有任何疑慮，請務必諮詢兒童青少年心智科（精神科）醫師、臨床/諮商心理師或職能治療師等專業醫事人員之評估與協助。
+                </p>
+            </div>
+
+            <div class="text-center text-xs text-slate-500 pt-2">
+                &copy; 2026 星光專注力家庭網. All rights reserved. 用溫暖與理解陪伴每個星光孩子成長。
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DIALOGS FOR PRINTABLE PREVIEWS -->
+    
+    <!-- Modal 1: Visual Daily Schedule -->
+    <div id="modal-schedule" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative space-y-6 my-8 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                <h3 class="text-lg font-bold text-slate-800"><i class="fa-solid fa-calendar-check text-amber-500 mr-2"></i>兒童每日視覺化作息表（預覽）</h3>
+                <button onclick="closeModal('modal-schedule')" class="text-slate-400 hover:text-slate-600 text-xl font-bold p-1">&times;</button>
+            </div>
+            
+            <div class="border-2 border-dashed border-amber-200 p-6 rounded-2xl bg-warmBg space-y-4">
+                <div class="text-center border-b border-amber-200 pb-3">
+                    <h4 class="text-xl font-extrabold text-slate-800">🌟 小星光好習慣每日作息表</h4>
+                    <p class="text-xs text-slate-500">寶貝姓名：＿＿＿＿＿＿  日期：＿＿年＿＿月＿＿日</p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                    <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
+                        <span class="font-bold text-slate-700">1. 放學掛好書包、洗手</span>
+                        <span class="w-5 h-5 rounded border-2 border-amber-400 inline-block"></span>
+                    </div>
+                    <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
+                        <span class="font-bold text-slate-700">2. 拿點心吃、休息 15 分鐘</span>
+                        <span class="w-5 h-5 rounded border-2 border-amber-400 inline-block"></span>
+                    </div>
+                    <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
+                        <span class="font-bold text-slate-700">3. 專注寫作業 (開啟計時器)</span>
+                        <span class="w-5 h-5 rounded border-2 border-amber-400 inline-block"></span>
+                    </div>
+                    <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
+                        <span class="font-bold text-slate-700">4. 檢查鉛筆盒與明天書包</span>
+                        <span class="w-5 h-5 rounded border-2 border-amber-400 inline-block"></span>
+                    </div>
+                    <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
+                        <span class="font-bold text-slate-700">5. 自由玩樂時間 30 分鐘</span>
+                        <span class="w-5 h-5 rounded border-2 border-amber-400 inline-block"></span>
+                    </div>
+                    <div class="p-3 bg-white rounded-xl border border-slate-200 flex items-center justify-between">
+                        <span class="font-bold text-slate-700">6. 刷牙洗澡、準備睡覺</span>
+                        <span class="w-5 h-5 rounded border-2 border-amber-400 inline-block"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-3 pt-2">
+                <button onclick="closeModal('modal-schedule')" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-600 font-bold text-xs">關閉</button>
+                <button onclick="window.print()" class="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-xs shadow-md"><i class="fa-solid fa-print mr-1"></i> 列印此表單</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2: Daily Reward Tracker -->
+    <div id="modal-reward" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative space-y-6 my-8 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                <h3 class="text-lg font-bold text-slate-800"><i class="fa-solid fa-award text-brand-600 mr-2"></i>正向獎勵集點卡（預覽）</h3>
+                <button onclick="closeModal('modal-reward')" class="text-slate-400 hover:text-slate-600 text-xl font-bold p-1">&times;</button>
+            </div>
+            
+            <div class="border-2 border-dashed border-brand-200 p-6 rounded-2xl bg-brand-50/50 space-y-4">
+                <div class="text-center border-b border-brand-200 pb-3">
+                    <h4 class="text-xl font-extrabold text-slate-800">🏆 星光小英雄 10 勝集點卡</h4>
+                    <p class="text-xs text-slate-500">目標任務：按時完成作業 / 情緒控制棒</p>
+                </div>
+                <div class="grid grid-cols-5 gap-3 py-4 text-center">
+                    <div class="h-14 rounded-xl border-2 border-brand-300 bg-white flex flex-col items-center justify-center text-xs font-bold text-brand-600">1 ⭐</div>
+                    <div class="h-14 rounded-xl border-2 border-brand-300 bg-white flex flex-col items-center justify-center text-xs font-bold text-brand-600">2 ⭐</div>
+                    <div class="h-14 rounded-xl border-2 border-brand-300 bg-white flex flex-col items-center justify-center text-xs font-bold text-brand-600">3 ⭐</div>
+                    <div class="h-14 rounded-xl border-2 border-brand-300 bg-white flex flex-col items-center justify-center text-xs font-bold text-brand-600">4 ⭐</div>
+                    <div class="h-14 rounded-xl border-2 border-brand-300 bg-white flex flex-col items-center justify-center text-xs font-bold text-brand-600">5 🎁</div>
+                    <div class="h-14 rounded-xl border-2 border-brand-300 bg-white flex flex-col items-center justify-center text-xs font-bold text-brand-600">6 ⭐</div>
+                    <div class="h-14 rounded-xl border-2 border-brand-300 bg-white flex flex-col items-center justify-center text-xs font-bold text-brand-600">7 ⭐</div>
+                    <div class="h-14 rounded-xl border-2 border-brand-300 bg-white flex flex-col items-center justify-center text-xs font-bold text-brand-600">8 ⭐</div>
+                    <div class="h-14 rounded-xl border-2 border-brand-300 bg-white flex flex-col items-center justify-center text-xs font-bold text-brand-600">9 ⭐</div>
+                    <div class="h-14 rounded-xl border-2 border-amber-400 bg-amber-100 flex flex-col items-center justify-center text-xs font-bold text-amber-800">10 🏆大獎</div>
+                </div>
+                <p class="text-xs text-slate-500 text-center">集滿獎勵：與爸爸媽媽一起去公園騎腳踏車 40 分鐘！</p>
+            </div>
+
+            <div class="flex justify-end gap-3 pt-2">
+                <button onclick="closeModal('modal-reward')" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-600 font-bold text-xs">關閉</button>
+                <button onclick="window.print()" class="px-5 py-2 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-bold text-xs shadow-md"><i class="fa-solid fa-print mr-1"></i> 列印此表單</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3: Parent Mood Journal -->
+    <div id="modal-journal" class="hidden fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl relative space-y-6 my-8 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                <h3 class="text-lg font-bold text-slate-800"><i class="fa-solid fa-book-bookmark text-sage-600 mr-2"></i>家長每日充電日記（預覽）</h3>
+                <button onclick="closeModal('modal-journal')" class="text-slate-400 hover:text-slate-600 text-xl font-bold p-1">&times;</button>
+            </div>
+            
+            <div class="border-2 border-dashed border-sage-200 p-6 rounded-2xl bg-sage-50/50 space-y-4 text-xs text-slate-700">
+                <h4 class="text-lg font-bold text-slate-800 text-center">🍵 家長靜心充電日誌</h4>
+                <div class="space-y-3">
+                    <div class="p-3 bg-white rounded-xl">
+                        <p class="font-bold mb-1 text-sage-700">1. 今天孩子做得好的一個微小進步：</p>
+                        <p class="text-slate-400 italic">例：今天聽到提醒後，只講了一次就主動收好玩具。</p>
+                    </div>
+                    <div class="p-3 bg-white rounded-xl">
+                        <p class="font-bold mb-1 text-sage-700">2. 今天我自己值得肯定的一個地方：</p>
+                        <p class="text-slate-400 italic">例：當孩子發脾氣時，我先做了三次深呼吸，沒有跟著失控。</p>
+                    </div>
+                    <div class="p-3 bg-white rounded-xl">
+                        <p class="font-bold mb-1 text-sage-700">3. 今晚給自己的給力小獎勵：</p>
+                        <p class="text-slate-400 italic">例：睡前喝一杯熱洋甘菊茶，安靜聽音樂 10 分鐘。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-end gap-3 pt-2">
+                <button onclick="closeModal('modal-journal')" class="px-4 py-2 rounded-xl bg-slate-100 text-slate-600 font-bold text-xs">關閉</button>
+                <button onclick="window.print()" class="px-5 py-2 rounded-xl bg-sage-600 hover:bg-sage-700 text-white font-bold text-xs shadow-md"><i class="fa-solid fa-print mr-1"></i> 列印此表單</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT INTERACTIVE LOGIC -->
+    <script>
+        // ----------------------------------------------------
+        // 1. Mobile Menu Toggle
+        // ----------------------------------------------------
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu on clicking link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // ----------------------------------------------------
+        // 2. ADHD Types Tab Switcher
+        // ----------------------------------------------------
+        function switchAdhdTab(type) {
+            // Hide all tab panels
+            document.querySelectorAll('.adhd-tab-panel').forEach(panel => panel.classList.add('hidden'));
+            
+            // Reset button styles
+            document.querySelectorAll('.adhd-tab-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-600', 'text-white', 'shadow-sm');
+                btn.classList.add('bg-slate-100', 'text-slate-600');
+            });
+
+            // Activate chosen tab
+            document.getElementById(`tab-content-${type}`).classList.remove('hidden');
+            const activeBtn = document.getElementById(`tab-btn-${type}`);
+            activeBtn.classList.remove('bg-slate-100', 'text-slate-600');
+            activeBtn.classList.add('bg-brand-600', 'text-white', 'shadow-sm');
+        }
+
+        // ----------------------------------------------------
+        // 3. Myth Cards Flip/Toggle Effect
+        // ----------------------------------------------------
+        function toggleMythCard(card) {
+            const front = card.querySelector('.myth-front');
+            const back = card.querySelector('.myth-back');
+
+            if (front.classList.contains('hidden')) {
+                front.classList.remove('hidden');
+                back.classList.add('hidden');
+            } else {
+                front.classList.add('hidden');
+                back.classList.remove('hidden');
+            }
+        }
+
+        // ----------------------------------------------------
+        // 4. Interactive Visual Timer Logic
+        // ----------------------------------------------------
+        let timerDuration = 15 * 60; // default 15 minutes
+        let timerRemaining = timerDuration;
+        let timerInterval = null;
+        let isTimerRunning = false;
+        let timerMode = 'focus'; // 'focus' or 'break'
+
+        const timerCircle = document.getElementById('timer-circle');
+        const timerDisplay = document.getElementById('timer-display');
+        const timerStatusText = document.getElementById('timer-status-text');
+        const timerStartBtn = document.getElementById('timer-start-btn');
+        const timerStartIcon = document.getElementById('timer-start-icon');
+        const timerStartLabel = document.getElementById('timer-start-label');
+
+        const totalCircleDash = 263.89; // 2 * PI * r (r=42)
+
+        function updateTimerUI() {
+            const minutes = Math.floor(timerRemaining / 60);
+            const seconds = timerRemaining % 60;
+            timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+            // Calculate DashOffset for Visual Progress
+            const fraction = timerRemaining / timerDuration;
+            const dashoffset = totalCircleDash * (1 - fraction);
+            timerCircle.style.strokeDashoffset = dashoffset;
+        }
+
+        function setTimerMode(mode) {
+            resetTimer();
+            timerMode = mode;
+
+            const focusBtn = document.getElementById('timer-mode-focus');
+            const breakBtn = document.getElementById('timer-mode-break');
+
+            if (mode === 'focus') {
+                timerDuration = 15 * 60;
+                timerStatusText.textContent = '寫作業 / 專注中';
+                timerCircle.setAttribute('stroke', '#f59e0b'); // amber color
+                focusBtn.className = 'px-4 py-1.5 rounded-full text-xs font-bold transition bg-amber-500 text-white shadow-sm';
+                breakBtn.className = 'px-4 py-1.5 rounded-full text-xs font-bold transition bg-slate-100 text-slate-600';
+            } else {
+                timerDuration = 5 * 60;
+                timerStatusText.textContent = '伸展吃點心 / 休息中';
+                timerCircle.setAttribute('stroke', '#10b981'); // green color
+                breakBtn.className = 'px-4 py-1.5 rounded-full text-xs font-bold transition bg-emerald-500 text-white shadow-sm';
+                focusBtn.className = 'px-4 py-1.5 rounded-full text-xs font-bold transition bg-slate-100 text-slate-600';
+            }
+
+            timerRemaining = timerDuration;
+            updateTimerUI();
+        }
+
+        function toggleTimer() {
+            if (isTimerRunning) {
+                // Pause Timer
+                clearInterval(timerInterval);
+                isTimerRunning = false;
+                timerStartIcon.className = 'fa-solid fa-play';
+                timerStartLabel.textContent = '繼續計時';
+                timerStartBtn.className = 'px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm shadow-md transition flex items-center gap-2';
+            } else {
+                // Start Timer
+                isTimerRunning = true;
+                timerStartIcon.className = 'fa-solid fa-pause';
+                timerStartLabel.textContent = '暫停計時';
+                timerStartBtn.className = 'px-6 py-2.5 rounded-xl bg-slate-700 hover:bg-slate-800 text-white font-bold text-sm shadow-md transition flex items-center gap-2';
+
+                timerInterval = setInterval(() => {
+                    if (timerRemaining > 0) {
+                        timerRemaining--;
+                        updateTimerUI();
+                    } else {
+                        clearInterval(timerInterval);
+                        isTimerRunning = false;
+                        timerStartIcon.className = 'fa-solid fa-play';
+                        timerStartLabel.textContent = '重新開始';
+                        alert(timerMode === 'focus' ? '🎉 太棒了！專注時間結束！快去休息 5 分鐘吧！' : '⏰ 休息時間到了，準備開始下一個微型專注囉！');
+                    }
+                }, 1000);
+            }
+        }
+
+        function resetTimer() {
+            clearInterval(timerInterval);
+            isTimerRunning = false;
+            timerRemaining = timerDuration;
+            timerStartIcon.className = 'fa-solid fa-play';
+            timerStartLabel.textContent = '開始計時';
+            timerStartBtn.className = 'px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-600 text-white font-bold text-sm shadow-md transition flex items-center gap-2';
+            updateTimerUI();
+        }
+
+        // ----------------------------------------------------
+        // 5. Teacher Letter Generator Logic
+        // ----------------------------------------------------
+        function generateTeacherLetter() {
+            const name = document.getElementById('child-name').value.trim() || '孩子';
+            const grade = document.getElementById('child-grade').value.trim() || '班級';
+
+            // Selected strengths
+            const strengths = Array.from(document.querySelectorAll('.strength-cb:checked')).map(cb => cb.value);
+            // Selected challenges
+            const challenges = Array.from(document.querySelectorAll('.challenge-cb:checked')).map(cb => cb.value);
+            // Selected strategies
+            const strategies = Array.from(document.querySelectorAll('.strategy-cb:checked')).map(cb => cb.value);
+
+            let letter = `尊敬的老師 您好：
+
+我是 ${grade} ${name} 的家長。非常感謝您悉心帶領班級！開學之際，想向您簡單說明 ${name} 的特質，希望能與您建立良好的親師合作關係。
+
+【孩子的閃光點】
+${strengths.length > 0 ? strengths.map(s => `・${s}`).join('\n') : '・對新事物充滿好奇心、熱心助人'}
+
+【孩子在學習與適應上的特質】
+${name} 的大腦執行功能較為活躍，在校期間可能偶爾會有以下情況：
+${challenges.length > 0 ? challenges.map(c => `・${c}`).join('\n') : '・需要明確簡短的指令引導'}
+
+【建議可嘗試的教學支援】
+若情況許可，想懇請老師在日常課堂中給予以下微調協助：
+${strategies.length > 0 ? strategies.map(st => `・${st}`).join('\n') : '・給予溫柔的眼神提示'}
+
+我們在家中也會積極搭配「視覺化計時器」與正向獎勵卡輔導。若 ${name} 在學校有任何需要家長配合調整的地方，歡迎隨時透過聯絡簿或電話與我聯繫。
+
+再次謝謝老師的包容與辛勞！
+
+${name} 的家長 敬上`;
+
+            document.getElementById('letter-output').textContent = letter;
+        }
+
+        function copyLetterText() {
+            const text = document.getElementById('letter-output').textContent;
+            
+            // Clipboard fallback
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            // Toast feedback
+            const toast = document.getElementById('copy-toast');
+            toast.classList.remove('hidden');
+            setTimeout(() => toast.classList.add('hidden'), 3000);
+        }
+
+        function printLetter() {
+            window.print();
+        }
+
+        // ----------------------------------------------------
+        // 6. Interactive Parent Stress Quiz
+        // ----------------------------------------------------
+        function calculateQuizResult() {
+            const form = document.getElementById('quiz-form');
+            const q1 = form.querySelector('input[name="q1"]:checked');
+            const q2 = form.querySelector('input[name="q2"]:checked');
+            const q3 = form.querySelector('input[name="q3"]:checked');
+            const q4 = form.querySelector('input[name="q4"]:checked');
+
+            if (!q1 || !q2 || !q3 || !q4) {
+                alert('請完整回答所有 4 個問題，才能產生成效分析喔！');
+                return;
+            }
+
+            const totalScore = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value) + parseInt(q4.value);
+
+            document.getElementById('quiz-form').classList.add('hidden');
+            const resultBox = document.getElementById('quiz-result');
+            resultBox.classList.remove('hidden');
+
+            const resultTitle = document.getElementById('result-title');
+            const resultDesc = document.getElementById('result-desc');
+            const resultTips = document.getElementById('result-tips');
+
+            if (totalScore <= 6) {
+                resultTitle.textContent = '綠色燈號：能量充沛，正向陪伴大使！';
+                resultDesc.textContent = '太讚了！您目前擁有相當良好的心態與調節策略，能夠同理孩子的特質並給予支持。請繼續保持這份溫暖！';
+                resultTips.innerHTML = `
+                    <li>分享您的教養經驗給其他有需要的家長，給予彼此支持。</li>
+                    <li>持續練習「微型喘息」，維持好自己的能量場。</li>
+                `;
+            } else if (totalScore <= 9) {
+                resultTitle.textContent = '黃色燈號：微度焦慮，需要補充育兒電量！';
+                resultDesc.textContent = '您做得已經很棒了！陪伴 ADHD 孩子確實需要花費巨大的耐心。最近您可能稍微感到有些疲憊。';
+                resultTips.innerHTML = `
+                    <li>下載本站的「視覺化作息表」，減少重複口頭催促的次數。</li>
+                    <li>每天給自己 15 分鐘「無負擔靜心時間」，喝杯茶或散步。</li>
+                    <li>練習用「具體讚美」代替指責，重塑正向互動循環。</li>
+                `;
+            } else {
+                resultTitle.textContent = '紅色燈號：壓力緊繃，請先給自己一個溫暖緊抱！';
+                resultDesc.textContent = '辛苦您了！您目前承受了相當高的育兒壓力。請記住，有壓力是極其正常的，您不需要獨自扛下所有責任。';
+                resultTips.innerHTML = `
+                    <li>先暫停檢討孩子，今晚放慢節奏，與另一半或親友協調接手照顧 1 小時。</li>
+                    <li>使用本站「寫給老師的一封信產生器」，尋求學校專業力量的共同合作。</li>
+                    <li>必要時可尋求兒童心智科或諮商心理師的家長諮詢服務，您並不孤單！</li>
+                `;
+            }
+        }
+
+        function resetQuiz() {
+            document.getElementById('quiz-form').reset();
+            document.getElementById('quiz-form').classList.remove('hidden');
+            document.getElementById('quiz-result').classList.add('hidden');
+        }
+
+        // ----------------------------------------------------
+        // 7. Modal Control Helpers
+        // ----------------------------------------------------
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        // Initialize defaults on load
+        window.onload = function() {
+            updateTimerUI();
+            generateTeacherLetter();
+        };
+    </script>
+</body>
+</html>
